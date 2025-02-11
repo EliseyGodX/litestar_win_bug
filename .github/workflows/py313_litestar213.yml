@@ -1,0 +1,19 @@
+name: python3.13_litestar2.13
+
+on: [push, pull_request]
+
+jobs:
+  run-python:
+    runs-on: windows-2022
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - run: pip install "litestar==2.13" uvicorn
+
+      - run: litestar run
+
